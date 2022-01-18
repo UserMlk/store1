@@ -7888,6 +7888,29 @@ ROM_START( kof97h ) /* AES VERSION */
 	ROM_LOAD16_BYTE( "232-c6.c6", 0x2000001, 0x400000, CRC(4ff4d47b) SHA1(4d5689ede24a5fe4330bd85d4d3f4eb2795308bb) ) /* Plane 2,3 */ /* TC5332205 */
 ROM_END
 
+ROM_START( kof97z ) /* AES VERSION */
+	ROM_REGION( 0x500000, "cslot1:maincpu", ROMREGION_BE|ROMREGION_16BIT )
+	ROM_LOAD16_WORD_SWAP( "232-p1.p1", 0x000000, 0x100000, CRC() SHA1() ) /* TC538200 */
+	ROM_LOAD16_WORD_SWAP( "232-p2.sp2", 0x100000, 0x400000, CRC() SHA1() ) /* TC5332205 */
+
+	NEO_SFIX_128K( "232-s1.s1", CRC() SHA1() ) /* TC531000 */
+
+	NEO_BIOS_AUDIO_128K( "232-m1.m1", CRC() SHA1() ) /* TC531001 */
+
+	ROM_REGION( 0xc00000, "cslot1:ymsnd:adpcma", 0 )
+	ROM_LOAD( "232-v1.v1", 0x000000, 0x400000, CRC() SHA1() ) /* TC5332204 */
+	ROM_LOAD( "232-v2.v2", 0x400000, 0x400000, CRC() SHA1() ) /* TC5332204 */
+	ROM_LOAD( "232-v3.v3", 0x800000, 0x400000, CRC() SHA1() ) /* TC5332204 */
+
+	ROM_REGION( 0x2800000, "cslot1:sprites", 0 )
+	ROM_LOAD16_BYTE( "232-c1.c1", 0x0000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "232-c2.c2", 0x0000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "232-c3.c3", 0x1000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "232-c4.c4", 0x1000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* TC5364205 */
+	ROM_LOAD16_BYTE( "232-c5.c5", 0x2000000, 0x400000, CRC() SHA1() ) /* Plane 0,1 */ /* TC5332205 */
+	ROM_LOAD16_BYTE( "232-c6.c6", 0x2000001, 0x400000, CRC() SHA1() ) /* Plane 2,3 */ /* TC5332205 */
+ROM_END
+
 ROM_START( kof97k ) /* KOREAN VERSION */
 	ROM_REGION( 0x500000, "cslot1:maincpu", ROMREGION_BE|ROMREGION_16BIT )
 	ROM_LOAD16_WORD_SWAP( "232-p1.p1",  0x000000, 0x100000, CRC(7db81ad9) SHA1(8bc42be872fd497eb198ca13bf004852b88eb1dc) ) /* TC538200 */
@@ -9747,6 +9770,41 @@ ROM_START( kof2002 ) /* Encrypted Set */ /* MVS AND AES VERSION */
 	ROM_LOAD16_BYTE( "265-c6.c6", 0x2000001, 0x800000, CRC(03fdd1eb) SHA1(6155c7e802062f4eafa27e414c4e73ee59b868bf) ) /* Plane 2,3 */ /* mask rom TC5364205 */
 	ROM_LOAD16_BYTE( "265-c7.c7", 0x3000000, 0x800000, CRC(1a2749d8) SHA1(af7d9ec1d576209826fa568f676bbff92f6d6ddd) ) /* Plane 0,1 */ /* mask rom TC5364205 */
 	ROM_LOAD16_BYTE( "265-c8.c8", 0x3000001, 0x800000, CRC(ab0bb549) SHA1(d23afb60b7f831f7d4a98ad3c4a00ee19877a1ce) ) /* Plane 2,3 */ /* mask rom TC5364205 */
+ROM_END
+
+ROM_START( kof2002z ) /* Encrypted Set */ /* MVS AND AES VERSION */
+	ROM_REGION( 0x500000, "cslot1:maincpu", ROMREGION_BE|ROMREGION_16BIT )
+	ROM_LOAD16_WORD_SWAP( "265-p1.p1",  0x000000, 0x100000, CRC() SHA1() ) /* mask rom TC538200 */
+	ROM_LOAD16_WORD_SWAP( "265-p2.sp2", 0x100000, 0x400000, CRC() SHA1() ) /* mask rom TC5332205 */
+
+	ROM_Y_ZOOM
+
+	/* The Encrypted Boards do not have an s1 rom, data for it comes from the Cx ROMs */
+	ROM_REGION( 0x20000, "cslot1:fixed", 0 )
+	ROM_FILL( 0x000000, 0x20000, 0x000000 )
+	ROM_REGION( 0x20000, "fixedbios", 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC() SHA1() )
+
+	/* Encrypted */
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265-m1.m1", CRC() SHA1() ) /* mask rom TC531001 */
+
+	ROM_REGION( 0x1000000, "cslot1:ymsnd:adpcma", 0 )
+	/* Encrypted */
+	ROM_LOAD( "265-v1.v1", 0x000000, 0x400000, CRC() SHA1() ) /* mask rom TC5364205 */
+	ROM_LOAD( "265-v2.v2", 0x400000, 0x400000, CRC() SHA1() ) /* mask rom TC5364205 */
+	ROM_LOAD( "265-v3.v3", 0x800000, 0x400000, CRC() SHA1() ) /* mask rom TC5364205 */
+	ROM_LOAD( "265-v4.v4", 0xC00000, 0x400000, CRC() SHA1() ) /* mask rom TC5364205 */
+
+	ROM_REGION( 0x4000000, "cslot1:sprites", 0 )
+	/* Encrypted */
+	ROM_LOAD16_BYTE( "265-c1.c1", 0x0000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c2.c2", 0x0000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c3.c3", 0x1000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c4.c4", 0x1000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c5.c5", 0x2000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c6.c6", 0x2000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c7.c7", 0x3000000, 0x800000, CRC() SHA1() ) /* Plane 0,1 */ /* mask rom TC5364205 */
+	ROM_LOAD16_BYTE( "265-c8.c8", 0x3000001, 0x800000, CRC() SHA1() ) /* Plane 2,3 */ /* mask rom TC5364205 */
 ROM_END
 
 /****************************************
